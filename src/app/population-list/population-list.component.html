@@ -1,0 +1,36 @@
+<h2> populations List</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> ID</th>
+            <th> Address </th>
+            <th> City</th>
+            <th> Name </th>
+            <th> State</th>
+            <th> Latitute </th>
+            <th> Longitude</th>
+            <th> Premise ID </th>
+            <th> Postal Code </th>
+            <th> Total Animal Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let population of populations" >
+            <td> {{ population.id }} </td>
+            <td> {{ population.address }} </td>
+            <td> {{ population.city }} </td>
+            <td> {{ population.name }} </td>
+            <td> {{ population.state }} </td>
+            <td> {{ population.lat }} </td>
+            <td> {{ population.lon }} </td>
+            <td> {{ population.premise_id }} </td>
+            <td> {{ population.postalcode }} </td>
+            <td> {{ population.total_animal_count }} </td>
+            <!-- <td>
+                <button (click) = "updatepopulation(population.id)" class = "btn btn-info"> Update</button>
+                <button (click) = "deletepopulation(population.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "populationDetails(population.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td> -->
+        </tr>
+    </tbody>
+</table>

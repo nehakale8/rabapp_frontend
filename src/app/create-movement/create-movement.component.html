@@ -1,0 +1,51 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Create Movement </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> Company </label>
+            <input type="text" class ="form-control" id = "company"
+                [(ngModel)] = "movement.company" name = "company">
+        </div>
+    
+        <div class="form-group">
+            <label> Reason</label>
+            <input type="text" class ="form-control" id = "reason"
+                [(ngModel)] = "movement.reason" name = "reason">
+        </div>
+
+        <div class="form-group">
+            <label> Species</label>
+            <input type="text" class ="form-control" id = "species"
+                [(ngModel)] = "movement.species" name = "species">
+        </div>
+    
+        <div class="form-group">
+            <label> Origin Premise ID</label>
+            <input type="text" class ="form-control" id = "origin_premise_id"
+                [(ngModel)] = "movement.origin_premise_id" name = "origin_premise_id">
+        </div>
+    
+        <div class="form-group">
+            <label> Destination Premise ID</label>
+            <input type="text" class ="form-control" id = "dest_premise_id"
+                [(ngModel)] = "movement.dest_premise_id" name = "dest_premise_id">
+        </div>
+    
+        <div class="form-group">
+            <label> Start Date </label>
+            <input type="text" class ="form-control" id = "start_date"
+                [(ngModel)] = "movement.start_date" name = "start_date">
+        </div>
+    
+        <div class="form-group">
+            <label> Moved Count</label>
+            <input type="text" class ="form-control" id = "moved_count"
+                [(ngModel)] = "movement.moved_count" name = "moved_count">
+        </div>
+    
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 

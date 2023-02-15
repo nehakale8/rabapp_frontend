@@ -1,0 +1,32 @@
+<h2> Movements List</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> ID</th>
+            <th> Company </th>
+            <th> Reason</th>
+            <th> Species </th>
+            <th> Origin Premise ID</th>
+            <th> Destination Premise ID</th>
+            <th> Start Date</th>
+            <th> Moved Count </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let movement of movements" >
+            <td> {{ movement.id }} </td>
+            <td> {{ movement.company }} </td>
+            <td> {{ movement.reason }} </td>
+            <td> {{ movement.species }} </td>
+            <td> {{ movement.origin_premise_id }} </td>
+            <td> {{ movement.dest_premise_id }} </td>
+            <td> {{ movement.start_date }} </td>
+            <td> {{ movement.moved_count }} </td>
+            <!-- <td>
+                <button (click) = "updatemovement(movement.id)" class = "btn btn-info"> Update</button>
+                <button (click) = "deletemovement(movement.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "movementDetails(movement.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td> -->
+        </tr>
+    </tbody>
+</table>
