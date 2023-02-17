@@ -7,13 +7,15 @@ import { MovementsListComponent } from './movements-list/movements-list.componen
 import { CreateMovementComponent } from './create-movement/create-movement.component';
 import { FormsModule } from '@angular/forms';
 import { PopulationListComponent } from './population-list/population-list.component';
+import { ShowMapComponent } from './show-map/show-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovementsListComponent,
     CreateMovementComponent,
-    PopulationListComponent
+    PopulationListComponent,
+    ShowMapComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Population } from './population';
 
 @Injectable({
@@ -17,8 +17,13 @@ export class PopulationService {
     return this.httpClient.get<Population[]>(this.baseURL);
   }
 
-  createPopulation(population: Population): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`, population);
+  getPopulationByPid(id: String): Observable<Population>{
+    return this.httpClient.get<Population>(`${this.baseURL}/${id}`);
   }
+
+  updatePopulation(id: String, population: Population): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`, population);
+  }
+
 
 }

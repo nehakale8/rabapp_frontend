@@ -14,11 +14,14 @@ export class MovementsListComponent implements OnInit{
 
   ngOnInit(): void {
       console.log(this.getMovements());
+      console.log(this.movements);
   }
 
   private getMovements(){ 
     this.movementsService.getMovementsList().subscribe(data=>{
       this.movements=data;
+      console.log(this.movements);
+      console.log(data);
     })
   }
 
