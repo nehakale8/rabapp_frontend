@@ -1,5 +1,6 @@
 /// <reference path="../../../node_modules/@types/googlemaps/index.d.ts"/>
 import { Component, OnInit } from '@angular/core';
+import { PopulationService } from '@app/population.service';
 import { Loader } from '@googlemaps/js-api-loader';
 import { map } from 'rxjs';
 
@@ -16,6 +17,9 @@ export class ShowMapComponent implements OnInit {
 
   title = 'google-maps';
   private map!: google.maps.Map
+  constructor(private populationService: PopulationService){}
+  markers = []  as  any;
+
 
   ngOnInit(): void {
     let loader = new Loader({
@@ -26,7 +30,7 @@ export class ShowMapComponent implements OnInit {
 
       console.log('loaded gmaps')
 
-      const location = { lat: 51.233334, lng: 	6.783333 }
+      const location = { lat: 44, lng: -92, }
       const mak=[
         ['Bondi Beach', -33.890542, 151.274856, 4],
         ['Coogee Beach', -33.923036, 151.259052, 5],
@@ -43,22 +47,37 @@ export class ShowMapComponent implements OnInit {
 
       var infowindow = new google.maps.InfoWindow();
       var marker, i;
-    
-    // for (i = 0; i < mak.length; i++) {  
-    //   marker = new google.maps.Marker({
-    //     position: new google.maps.LatLng(mak[i][1], mak[i][2]),
-    //     map: this.map
-    //   });
-      
-    //   google.maps.event.addListener(marker, 'click', ((marker, i) => {
-    //     return () => {
-    //       infowindow.setContent(mak[i][0]);
-    //       infowindow.open(this.map, marker);
-    //     }
-    //   })(marker, i));
-    // }
+
+    this.populationService.getPopulationsList()
+      .subscribe(data => {
+          console.log(data)
+          for (var dataE in data)  
+          {
+            marker = new google.maps.Marker({
+              position: {
+                lat: data[dataE].lat,
+                lng: data[dataE].lon,
+              },
+              label: {
+                color: 'black',
+                text: data[dataE].name,
+              },
+              title: data[dataE].address,
+              map: this.map
+            });
+            
+            google.maps.event.addListener(marker, 'click', ((marker, dataE) => {
+              return () => {
+                var y=Number(dataE)+1
+                infowindow.setContent("Farm ID "+y.toString());
+                infowindow.open(this.map, marker);
+              }
+            })(marker, dataE));
+          }
+  })
 
 
     })
   }
+  
 }

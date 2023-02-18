@@ -40,51 +40,8 @@ export class CreateMovementComponent implements OnInit {
 
     console.log(this.movement);
     this.saveMovement();
-
-    this.getPopulation(this.movement.origin_premise_id)
-    console.log(this.population)
-    console.log(this.movement)
-
-    this.oid=this.population.total_animal_count-this.movement.moved_count;
-    console.log(this.population)
-    console.log(this.movement)
-    
-    this.population.total_animal_count=this.oid
-    console.log(this.population)
-    console.log(this.population.total_animal_count)
-    console.log(this.oid)
-    console.log(this.movement);
-    this.populationService.updatePopulation(this.movement.origin_premise_id, this.population).subscribe(data=>{
-      console.log(this.population);
-    }, error=>console.log("on submt errror   "+error));
-
-
-    this.getPopulation(this.movement.dest_premise_id)
-    this.did=this.population.total_animal_count+this.movement.moved_count;
-    this.population.total_animal_count=this.did  
-    
-    this.populationService.updatePopulation(this.movement.dest_premise_id, this.population).subscribe(data=>{
-      this.goToMovementList();
-      console.log(this.population);
-    }, error=>console.log(error));
-
+    this.goToMovementList();
   }
-
-
-  // private getPopulation(pid: String): Population{ 
-  //   var x: Population=new Population();
-  //   this.population=this.populationService.getPopulationByPid(pid).pipe(map( r => r))
-  //   return x
-  // }
-
-  private getPopulation(pid: String){ 
-    this.populationService.getPopulationByPid(pid).pipe(map(data=>{
-      this.population=data;
-      console.log(this.population);
-      console.log(data);
-    }))
-  }
-
 
 }
 

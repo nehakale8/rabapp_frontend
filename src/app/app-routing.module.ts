@@ -13,10 +13,15 @@ const usersModule = () => import('./users/users.module').then(x => x.UsersModule
 
 const routes: Routes = [
   {path: "movements", component: MovementsListComponent},
-  {path: "", redirectTo: "movements", pathMatch: "full"},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+  { path: 'account', loadChildren: accountModule },
   {path: "create_movement", component: CreateMovementComponent},  
   {path: "population", component: PopulationListComponent},
   {path: "map", component: ShowMapComponent},
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' },
+  
 ];
 
 @NgModule({

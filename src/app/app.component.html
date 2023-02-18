@@ -1,23 +1,31 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <ul class = "navbar-nav">
-      <li class = "nav-item">
-          <a routerLink="movements" routerLinkActive="active" class="nav-link" >Movement List</a>
-      </li>
-      <li class = "nav-item">
-        <a routerLink="population" routerLinkActive="active" class="nav-link" >Population List</a>
-    </li>
-      <li class = "nav-item">
-          <a routerLink="create_movement" routerLinkActive="active" class="nav-link" >Add Movement</a>
-      </li>
-  </ul>
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="user">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+      <a class="nav-item nav-link" routerLink="/movements" routerLinkActive="active">Movement List</a>
+      <a class="nav-item nav-link" routerLink="/population" routerLinkActive="active">Farm List</a>
+      
+  </div>
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link">{{user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
+        </li>
+    </ul>
 </nav>
 
-<h1 class="text-center"> Ho jayegaaaa </h1>
-<div class = "container">
+
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+  <alert></alert>
   <router-outlet></router-outlet>
 </div>
-<footer class = "footer">
+
+
+<!-- <footer class = "footer mt-4">
   <div class = "container">
       <span>All Rights Reserved 2023 @Neha Kale</span>
   </div>
-</footer>
+</footer> -->
